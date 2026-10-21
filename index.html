@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orsarica Shipping L.L.C - FZ — Crude Oil Tanker Technical Management</title>
+<meta name="description" content="Orsarica Shipping L.L.C - FZ is an owner-side technical manager for crude oil tankers, operating from Dubai. Planned maintenance, class and vetting readiness, drydocking, procurement, QHSE and performance.">
+<meta name="theme-color" content="#F2F1ED">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2F1ED'/%3E%3Ccircle cx='16' cy='16' r='11' fill='%23782034'/%3E%3Cpath d='M7 18.5c3-4 9-1 14-5' stroke='%23858C94' stroke-width='3.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   ORSARICA SHIPPING — chart-paper system, keyed to the brand mark
+   Brand wine #782034 · brand grey #858C94  (sampled from the logo)
+   Everything else is a neutral printing-paper scaffold around them.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  /* Paper & ink */
+  --paper:#F2F1ED;
+  --paper-2:#E9E7E1;
+  --paper-3:#DEDAD2;
+  --ink:#151012;
+  --muted:#54565C;
+  --faint:#5F6168;
+  --rule:#CBC7BE;
+  --rule-soft:#DCD8CF;
+
+  /* Brand */
+  --brand:#782034;          /* solid fills — white type on top: 10.2:1 */
+  --brand-ink:#782034;      /* brand type on paper: 9.0:1             */
+  --brand-on-ink:#D4788C;   /* brand type on the dark surface: 6.2:1  */
+  --rose:#A6334C;           /* chart annotation register              */
+  --rose-soft:rgba(166,51,76,.13);
+  --brand-wash:rgba(120,32,52,.08);
+
+  /* Brand grey */
+  --steel:#858C94;          /* graphics only */
+  --steel-ink:#5E646C;      /* grey type on paper: 5.3:1 */
+  --sea-1:#D7DBDA;
+  --sea-2:#B4BDBE;
+  --sea-3:#8A969A;
+
+  --on-ink:#EDE9E6;
+  --on-ink-muted:#A2A6AC;
+  --on-ink-rule:#2B2429;
+
+  --gutter:20px;
+  --maxw:1340px;
+  --hair:1px;
+  --hdr:78px;
+
+  --ff-display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --ff-sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --ff-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --grain-opacity:.5;
+  --grain-blend:multiply;
+}
+
+/* ───────────────────────── base ───────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:400 16px/1.6 var(--ff-sans);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .5s var(--ease),color .5s var(--ease);
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+::selection{background:var(--brand);color:#fff}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--brand-ink);outline-offset:3px;border-radius:2px;
+}
+
+.grain{
+  position:fixed;inset:0;z-index:9998;pointer-events:none;
+  opacity:var(--grain-opacity);mix-blend-mode:var(--grain-blend);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+@media(min-width:900px){:root{--gutter:40px}}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.skip{
+  position:fixed;left:var(--gutter);top:-80px;z-index:10000;
+  background:var(--brand);color:#fff;padding:14px 22px;
+  font:500 .875rem/1 var(--ff-mono);letter-spacing:.08em;text-transform:uppercase;
+  transition:top .25s var(--ease);
+}
+.skip:focus{top:14px}
+
+/* ───────────────────────── logo asset ─────────────────────────
+   The mark only ever sits on paper. multiply makes a white JPEG field
+   dissolve into the paper and leaves a transparent PNG untouched, so
+   either export works and neither gets a plate behind it.            */
+.logo{width:auto;mix-blend-mode:multiply}
+
+/* ───────────────────────── type ───────────────────────── */
+.mono{font:500 .6875rem/1.4 var(--ff-mono);letter-spacing:.2em;text-transform:uppercase}
+.sec-mark{
+  display:flex;align-items:center;gap:14px;
+  font:500 .6875rem/1 var(--ff-mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rose);
+}
+.sec-mark::after{content:"";flex:1;height:var(--hair);background:var(--rule)}
+.sec-mark span{color:var(--muted)}
+.h2{
+  font-family:var(--ff-display);font-weight:400;
+  font-size:clamp(2.5rem,6.2vw,5.25rem);line-height:.95;letter-spacing:-.025em;max-width:19ch;
+}
+.h2 i{font-style:italic;color:var(--brand-ink)}
+.lede{font-size:clamp(1.0625rem,1.35vw,1.25rem);line-height:1.62;color:var(--muted);max-width:56ch}
+
+/* ───────────────────────── buttons ───────────────────────── */
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:12px;
+  min-height:54px;padding:0 28px;overflow:hidden;
+  font:600 .8125rem/1 var(--ff-mono);letter-spacing:.14em;text-transform:uppercase;
+  border:var(--hair) solid var(--ink);color:var(--ink);background:transparent;
+  transition:color .4s var(--ease),border-color .4s var(--ease);
+}
+.btn span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);
+  transform:translateY(101%);transition:transform .45s var(--ease-out)}
+.btn:focus-visible::before,.btn:active::before{transform:translateY(0)}
+.btn:focus-visible,.btn:active{color:var(--paper)}
+.btn svg{transition:transform .45s var(--ease-out)}
+@media(hover:hover){
+  .btn:hover::before{transform:translateY(0)}
+  .btn:hover{color:var(--paper)}
+  .btn:hover svg{transform:translateX(5px)}
+}
+.btn--solid{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn--solid::before{background:var(--ink)}
+.btn--solid:focus-visible,.btn--solid:active{color:var(--paper);border-color:var(--ink)}
+@media(hover:hover){.btn--solid:hover{color:var(--paper);border-color:var(--ink)}}
+
+.progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:9999;
+  background:var(--brand-ink);transform:scaleX(var(--p,0));transform-origin:0 50%;will-change:transform;
+}
+
+/* ───────────────────────── header ───────────────────────── */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  border-bottom:var(--hair) solid transparent;
+  transition:background .4s var(--ease),border-color .4s var(--ease);
+}
+.hdr.is-stuck{
+  background:color-mix(in srgb,var(--paper) 90%,transparent);
+  backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);
+  border-bottom-color:var(--rule);
+}
+@supports not (background:color-mix(in srgb,red,blue)){.hdr.is-stuck{background:var(--paper)}}
+.hdr__in{display:flex;align-items:center;gap:16px;min-height:var(--hdr)}
+
+.mark{display:flex;align-items:center;flex:none}
+.mark .logo{height:42px}
+@media(min-width:520px){.mark .logo{height:50px}}
+@media(min-width:900px){.mark .logo{height:90px}}
+
+.nav{margin-left:auto;display:none}
+@media(min-width:1140px){.nav{display:block}}
+.nav ul{display:flex;align-items:center;gap:4px}
+.nav a{
+  position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 13px;
+  font:500 .6875rem/1 var(--ff-mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);transition:color .3s var(--ease);
+}
+.nav a i{font-style:normal;color:var(--rule);transition:color .3s var(--ease)}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--ink)}
+.nav a:hover i,.nav a[aria-current="true"] i{color:var(--brand-ink)}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:14px;height:var(--hair);
+  background:var(--brand-ink);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease-out)}
+.nav a[aria-current="true"]::after{transform:scaleX(1)}
+
+.hdr__act{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+@media(min-width:1140px){.hdr__act{margin-left:18px}}
+.hdr__cta{display:none}
+@media(min-width:700px){.hdr__cta{display:inline-flex;min-height:44px;padding:0 20px;font-size:.6875rem}}
+
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;align-items:center;
+  width:44px;height:44px;border:var(--hair) solid var(--rule);transition:border-color .3s var(--ease)}
+@media(min-width:1140px){.burger{display:none}}
+.burger:hover{border-color:var(--ink)}
+.burger i{display:block;width:17px;height:1.5px;background:var(--ink);transition:transform .4s var(--ease-out),opacity .25s}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.drawer{
+  position:fixed;inset:0;z-index:899;background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;
+  clip-path:inset(0 0 100% 0);transition:clip-path .6s var(--ease-out);visibility:hidden;
+}
+.drawer.is-open{clip-path:inset(0 0 0 0);visibility:visible}
+.drawer ol{display:flex;flex-direction:column;border-top:var(--hair) solid var(--rule)}
+.drawer ol a{
+  display:flex;align-items:baseline;gap:16px;padding:18px 0;
+  border-bottom:var(--hair) solid var(--rule);
+  font-family:var(--ff-display);font-size:clamp(1.75rem,8vw,2.75rem);line-height:1;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease-out),color .3s;
+}
+.drawer.is-open ol a{opacity:1;transform:none}
+.drawer ol a i{font:500 .6875rem/1 var(--ff-mono);letter-spacing:.14em;color:var(--rose);font-style:normal}
+.drawer ol a:hover{color:var(--brand-ink)}
+.drawer__foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center}
+.drawer__foot .mono{color:var(--muted);max-width:100%;overflow-wrap:anywhere;letter-spacing:.12em}
+
+/* ───────────────────────── HERO ───────────────────────── */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--paper)}
+.hero__chart{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  mask-image:radial-gradient(130% 110% at 72% 42%,#000 25%,rgba(0,0,0,.35) 68%,transparent 100%);
+  -webkit-mask-image:radial-gradient(130% 110% at 72% 42%,#000 25%,rgba(0,0,0,.35) 68%,transparent 100%);
+}
+.hero__chart svg{width:100%;height:100%}
+.hero__in{
+  position:relative;z-index:1;
+  padding-top:clamp(112px,15vh,170px);padding-bottom:clamp(36px,5vh,64px);
+  min-height:min(100svh,880px);display:flex;flex-direction:column;justify-content:center;
+  cursor:crosshair;
+}
+.hero__eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);margin-bottom:clamp(22px,3.5vh,36px)}
+.hero__eyebrow b{color:var(--rose);font-weight:500}
+.hero__eyebrow em{font-style:normal;display:inline-flex;align-items:center;gap:7px;
+  padding:4px 9px;border:var(--hair) solid var(--rule);color:var(--ink)}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--brand-ink);flex:none;animation:pulse 2.4s var(--ease) infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--brand-wash);opacity:1}50%{box-shadow:0 0 0 6px transparent;opacity:.45}}
+
+h1{
+  font-family:var(--ff-display);font-weight:400;
+  font-size:clamp(2.75rem,8.6vw,7.75rem);line-height:.92;letter-spacing:-.03em;max-width:13ch;
+}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em}
+h1 .ln>span{display:block;transform:translateY(125%)}
+.js h1 .ln>span{animation:rise 1s var(--ease-out) forwards}
+.js h1 .ln:nth-child(2)>span{animation-delay:.1s}
+.js h1 .ln:nth-child(3)>span{animation-delay:.2s}
+@keyframes rise{to{transform:translateY(0)}}
+h1 em{font-style:italic;color:var(--brand-ink)}
+
+.hero__lede{margin-top:clamp(26px,4vh,40px);max-width:47ch;
+  font-size:clamp(1.0625rem,1.4vw,1.3125rem);line-height:1.58;color:var(--muted)}
+.js .hero__lede{opacity:0;transform:translateY(16px);animation:riseIn .9s var(--ease-out) .45s forwards}
+.hero__act{margin-top:clamp(30px,4.5vh,44px);display:flex;flex-wrap:wrap;gap:12px}
+.js .hero__act{opacity:0;transform:translateY(16px);animation:riseIn .9s var(--ease-out) .6s forwards}
+@keyframes riseIn{to{opacity:1;transform:none}}
+
+.bridge{position:relative;z-index:1;border-top:var(--hair) solid var(--rule);
+  background:color-mix(in srgb,var(--paper) 72%,transparent);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.bridge ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:720px){.bridge ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.bridge li{padding:16px var(--gutter);border-right:var(--hair) solid var(--rule);
+  border-bottom:var(--hair) solid var(--rule);display:flex;flex-direction:column;gap:7px}
+.bridge li:nth-child(2n){border-right:0}
+@media(min-width:720px){.bridge li{border-bottom:0;border-right:var(--hair) solid var(--rule)}.bridge li:last-child{border-right:0}}
+.bridge dt{font:500 .625rem/1 var(--ff-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.bridge dd{font:500 .9375rem/1.35 var(--ff-mono);letter-spacing:.01em;color:var(--ink)}
+.bridge dd.row{display:flex;align-items:center;gap:8px}
+.bridge dd b{color:var(--brand-ink);font-weight:500}
+
+/* ───────────────────────── ticker ───────────────────────── */
+.ticker{position:relative;background:var(--ink);color:var(--on-ink);overflow:hidden}
+.ticker__track{display:flex;width:max-content;animation:slide 52s linear infinite}
+@media(hover:hover){.ticker:hover .ticker__track{animation-play-state:paused}}
+.ticker:focus-within .ticker__track,
+.ticker.is-paused .ticker__track{animation-play-state:paused}
+.ticker__pause{
+  position:absolute;right:0;top:0;bottom:0;width:48px;display:grid;place-items:center;
+  background:var(--ink);border-left:var(--hair) solid #3A3035;
+  color:var(--on-ink-muted);transition:color .3s var(--ease);z-index:2;
+}
+/* the band fades out before the control so the type never looks truncated */
+.ticker__pause::before{
+  content:"";position:absolute;right:100%;top:0;bottom:0;width:60px;pointer-events:none;
+  background:linear-gradient(to right,rgba(21,16,18,0),var(--ink));
+}
+.ticker__pause:hover,.ticker__pause:focus-visible{color:var(--on-ink)}
+.ticker__pause svg{width:12px;height:12px}
+.ticker__pause .ic-play{display:none}
+.ticker.is-paused .ticker__pause .ic-play{display:block}
+.ticker.is-paused .ticker__pause .ic-pause{display:none}
+@keyframes slide{to{transform:translateX(-50%)}}
+.ticker__set{display:flex;align-items:center;flex:none}
+.ticker__set li{display:flex;align-items:center;gap:26px;padding:17px 26px 17px 0;
+  font:500 .6875rem/1 var(--ff-mono);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
+.ticker__set li::after{content:"";width:4px;height:4px;background:var(--brand-on-ink);flex:none;transform:rotate(45deg)}
+
+/* ───────────────────────── section frame ───────────────────────── */
+.sec{padding-block:clamp(72px,11vw,150px);position:relative}
+.sec--ink{background:var(--ink);color:var(--on-ink)}
+.sec--ink .lede{color:var(--on-ink-muted)}
+.sec--ink .sec-mark{color:var(--brand-on-ink)}
+.sec--ink .sec-mark::after{background:var(--on-ink-rule)}
+.sec--ink .sec-mark span{color:var(--on-ink-muted)}
+.sec--ink .h2 i{color:var(--brand-on-ink)}
+.sec__head{display:flex;flex-direction:column;gap:clamp(20px,3vw,30px)}
+
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease-out)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ───────────────────────── §00 STATEMENT + LOGO ───────────────────────── */
+.stmt{border-top:var(--hair) solid var(--rule);padding-top:clamp(40px,6vw,72px)}
+.stmt__grid{display:grid;gap:clamp(36px,5vw,72px);align-items:center;grid-template-columns:1fr}
+@media(min-width:980px){.stmt__grid{grid-template-columns:minmax(0,1fr) minmax(0,.82fr)}}
+.stmt h2{font-family:var(--ff-display);font-weight:400;
+  font-size:clamp(2.6rem,7.4vw,6rem);line-height:.94;letter-spacing:-.03em;max-width:12ch}
+.stmt h2 i{font-style:italic;color:var(--brand-ink)}
+.stmt__body{margin-top:clamp(22px,3vw,34px);max-width:46ch;
+  font-size:clamp(1rem,1.2vw,1.125rem);line-height:1.68;color:var(--muted)}
+
+.plate{position:relative;display:flex;align-items:center;justify-content:center;
+  padding:clamp(28px,5vw,56px);border:var(--hair) solid var(--rule);background:var(--paper-2);overflow:hidden}
+.plate::before,.plate::after{content:"";position:absolute;width:14px;height:14px;border:var(--hair) solid var(--rose)}
+.plate::before{top:12px;left:12px;border-right:0;border-bottom:0}
+.plate::after{bottom:12px;right:12px;border-left:0;border-top:0}
+.plate .logo{height:clamp(120px,17vw,210px);position:relative;z-index:1}
+.js .plate .logo{opacity:0;transform:scale(.94);transition:opacity 1s var(--ease),transform 1.1s var(--ease-out)}
+.js .plate.in .logo{opacity:1;transform:none}
+.plate__grid{position:absolute;inset:0;opacity:.55}
+.plate__cap{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;
+  font:500 .5625rem/1.4 var(--ff-mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--faint);display:flex;justify-content:space-between;gap:12px}
+
+.notes{display:flex;flex-direction:column;border-top:var(--hair) solid var(--rule);margin-top:clamp(34px,5vw,56px)}
+.note{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;align-items:baseline;
+  padding:17px 0;border-bottom:var(--hair) solid var(--rule)}
+@media(min-width:760px){.note{grid-template-columns:minmax(0,180px) minmax(0,1fr)}}
+.note dt{font:500 .625rem/1.4 var(--ff-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.note dd{font-size:.9375rem;line-height:1.55;color:var(--muted)}
+@media(max-width:759px){.note dd{grid-column:1/3}}
+
+/* ───────────────────────── §01 SCOPE ───────────────────────── */
+.index{margin-top:clamp(40px,6vw,72px);border-top:var(--hair) solid var(--rule)}
+.item{border-bottom:var(--hair) solid var(--rule);position:relative;isolation:isolate}
+.item::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;
+  background:radial-gradient(420px 220px at var(--mx,50%) var(--my,50%),var(--brand-wash),transparent 70%);
+  transition:opacity .45s var(--ease)}
+@media(hover:hover){.item:hover::before{opacity:1}}
+.item[open]::before{opacity:1}
+.item>summary{list-style:none;cursor:pointer;display:grid;align-items:baseline;
+  grid-template-columns:auto 1fr auto;gap:10px 18px;padding:clamp(20px,2.6vw,30px) 0;
+  transition:padding-left .5s var(--ease-out)}
+.item>summary::-webkit-details-marker{display:none}
+@media(hover:hover){.item:hover>summary{padding-left:14px}}
+.item[open]>summary{padding-left:14px}
+.item__n{font:500 .6875rem/1 var(--ff-mono);letter-spacing:.18em;color:var(--rose);padding-top:.6em}
+.item__t{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.6rem,3.5vw,2.75rem);
+  line-height:1.02;letter-spacing:-.02em;transition:color .35s var(--ease)}
+@media(hover:hover){.item:hover .item__t{color:var(--brand-ink)}}
+.item[open] .item__t{color:var(--brand-ink)}
+.item__sum{grid-column:2/3;font-size:.9375rem;line-height:1.55;color:var(--muted);max-width:52ch}
+.item__sign{grid-row:1/3;grid-column:3/4;align-self:center;position:relative;width:22px;height:22px;flex:none}
+.item__sign::before,.item__sign::after{content:"";position:absolute;background:var(--ink);
+  transition:transform .45s var(--ease-out),background .35s}
+.item__sign::before{left:0;right:0;top:50%;height:1.5px;margin-top:-.75px}
+.item__sign::after{top:0;bottom:0;left:50%;width:1.5px;margin-left:-.75px}
+.item[open] .item__sign::after{transform:rotate(90deg)}
+@media(hover:hover){.item:hover .item__sign::before,.item:hover .item__sign::after{background:var(--brand-ink)}}
+.item[open] .item__sign::before,.item[open] .item__sign::after{background:var(--brand-ink)}
+.item__body{display:grid;gap:22px clamp(28px,4vw,56px);grid-template-columns:1fr;
+  padding:0 0 clamp(26px,3.4vw,38px);animation:unfold .55s var(--ease-out)}
+@media(min-width:820px){.item__body{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-left:clamp(60px,8vw,120px)}}
+@keyframes unfold{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.item__body p{font-size:1rem;line-height:1.68;color:var(--muted);max-width:50ch}
+.specs{display:flex;flex-direction:column;align-self:start;border-top:var(--hair) solid var(--rule)}
+.specs li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;
+  border-bottom:var(--hair) solid var(--rule-soft);
+  font:400 .75rem/1.4 var(--ff-mono);letter-spacing:.06em;color:var(--muted)}
+.specs li b{color:var(--ink);font-weight:500;text-align:right}
+
+/* ───────────────────────── §02 VESSEL ANATOMY ───────────────────────── */
+.anat__grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:clamp(32px,5vw,56px)}
+@media(min-width:960px){.anat__grid{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(40px,5vw,80px)}}
+.stage{
+  position:sticky;top:calc(var(--hdr) + 4px);align-self:start;z-index:2;
+  background:var(--ink);border:var(--hair) solid var(--on-ink-rule);
+  padding:clamp(14px,2.2vw,24px);display:flex;flex-direction:column;gap:12px;
+}
+@media(min-width:960px){.stage{top:calc(var(--hdr) + 32px);padding:28px;gap:18px}}
+.stage__view svg{width:100%;height:auto;color:var(--on-ink)}
+.hull{stroke:currentColor;fill:none;stroke-width:2.2;stroke-linejoin:round}
+.detail{stroke:currentColor;fill:none;stroke-width:1.6}
+.wline{stroke:var(--brand-on-ink);stroke-width:1.8;stroke-dasharray:9 7;fill:none}
+.zone__fill{fill:var(--brand-on-ink);opacity:0;transition:opacity .55s var(--ease)}
+.zone.on .zone__fill{opacity:.24}
+.zone__mark{stroke:var(--brand-on-ink);stroke-width:2.4;fill:none;opacity:0;transition:opacity .55s var(--ease)}
+.zone.on .zone__mark{opacity:1}
+#caliper{stroke:var(--brand-on-ink);stroke-width:2;fill:none}
+#caliper line{transition:x1 .6s var(--ease-out),x2 .6s var(--ease-out)}
+.stage__meta{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;
+  border-top:var(--hair) solid var(--on-ink-rule);padding-top:14px;min-height:58px}
+.stage__name{font-family:var(--ff-display);font-size:clamp(1.125rem,2vw,1.5rem);color:var(--on-ink);line-height:1.1}
+.stage__spec{font:400 .6875rem/1.5 var(--ff-mono);letter-spacing:.1em;color:var(--on-ink-muted);text-align:right}
+.stage__idx{font:500 .625rem/1 var(--ff-mono);letter-spacing:.2em;color:var(--brand-on-ink)}
+
+.segs{display:flex;flex-direction:column;padding-top:clamp(28px,4vw,40px)}
+@media(min-width:960px){.segs{padding-top:0}}
+.seg{padding-block:clamp(34px,7vw,74px);border-bottom:var(--hair) solid var(--rule);
+  display:flex;flex-direction:column;gap:14px}
+.seg:first-child{border-top:var(--hair) solid var(--rule)}
+@media(min-width:960px){.seg:first-child{border-top:0;padding-top:0}}
+.seg__k{display:flex;align-items:center;gap:12px;font:500 .625rem/1 var(--ff-mono);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.seg__k em{font-style:normal;color:var(--faint)}
+.seg h3{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.75rem,4vw,2.75rem);
+  line-height:1;letter-spacing:-.02em}
+.seg>p:not(.seg__k){color:var(--muted);line-height:1.68;max-width:46ch}
+.seg__tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.seg__tags li{font:400 .6875rem/1 var(--ff-mono);letter-spacing:.08em;color:var(--muted);
+  border:var(--hair) solid var(--rule);padding:6px 9px}
+
+/* ───────────────────────── §03 DOCTRINE ───────────────────────── */
+.doctrine{margin-top:clamp(40px,6vw,72px);border-bottom:var(--hair) solid var(--on-ink-rule)}
+.dr{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);
+  gap:10px;align-items:start;padding:clamp(26px,3.4vw,42px) 0;
+  border-top:var(--hair) solid var(--on-ink-rule);transition:padding-left .55s var(--ease-out)}
+@media(min-width:900px){
+  .dr{grid-template-columns:auto minmax(0,.9fr) minmax(0,1.1fr);gap:0 clamp(26px,4vw,64px);align-items:baseline}
+  .dr:nth-child(even){padding-left:clamp(40px,7vw,120px)}
+}
+@media(min-width:900px) and (hover:hover){
+  .dr:hover{padding-left:clamp(14px,2vw,28px)}
+  .dr:nth-child(even):hover{padding-left:clamp(56px,9vw,150px)}
+}
+.dr::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;pointer-events:none;
+  background:radial-gradient(460px 200px at var(--mx,50%) var(--my,50%),rgba(212,120,140,.16),transparent 70%);
+  transition:opacity .45s var(--ease)}
+@media(hover:hover){.dr:hover::before{opacity:1}}
+/* touch: the row nearest the viewport centre takes the highlight */
+.dr.near::before{opacity:1}
+.dr.near{padding-left:14px}
+@media(min-width:900px){.dr.near:nth-child(even){padding-left:clamp(54px,8vw,134px)}}
+.dr__n{font:500 .6875rem/1 var(--ff-mono);letter-spacing:.2em;color:var(--brand-on-ink);padding-top:.45em}
+.dr h3{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.5rem,3vw,2.375rem);
+  line-height:1.04;letter-spacing:-.02em;color:var(--on-ink)}
+.dr>p:not(.dr__n){color:var(--on-ink-muted);line-height:1.7;font-size:.9375rem;max-width:52ch}
+
+/* ───────────────────────── §04 PASSAGE PLAN ───────────────────────── */
+.plan{margin-top:clamp(44px,6vw,80px);position:relative}
+.plan__rail{position:relative;height:var(--hair);background:var(--rule)}
+.plan__rail i{position:absolute;inset:0;background:var(--brand-ink);
+  transform:scaleX(var(--fill,0));transform-origin:0 50%;transition:transform .15s linear}
+.plan__grid{display:grid;grid-template-columns:1fr}
+@media(min-width:860px){.plan__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.leg{padding:clamp(24px,3vw,34px) 0 clamp(28px,3.4vw,40px);
+  border-bottom:var(--hair) solid var(--rule);display:flex;flex-direction:column;gap:12px;position:relative}
+@media(min-width:860px){
+  .leg{border-bottom:0;border-right:var(--hair) solid var(--rule);padding-inline:0 clamp(18px,2.4vw,32px)}
+  .leg:not(:first-child){padding-left:clamp(18px,2.4vw,32px)}
+  .leg:last-child{border-right:0}
+}
+.leg::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;
+  background:var(--paper);border:1.5px solid var(--rule);border-radius:50%;
+  transition:border-color .4s var(--ease),background .4s var(--ease)}
+@media(min-width:860px){.leg:not(:first-child)::before{left:clamp(18px,2.4vw,32px)}}
+.leg.lit::before{border-color:var(--brand-ink);background:var(--brand-ink)}
+.leg__h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.leg__p{font:500 .625rem/1 var(--ff-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.leg__t{font:500 .625rem/1 var(--ff-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.leg h3{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.08;letter-spacing:-.015em}
+.leg ul{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.leg li{position:relative;padding-left:16px;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.leg li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:var(--hair);background:var(--rule)}
+
+/* ───────────────────────── QUOTE ───────────────────────── */
+.quote{position:relative;overflow:hidden;background:var(--ink);color:var(--on-ink);padding-block:clamp(80px,13vw,180px)}
+.quote__bg{position:absolute;inset:0;opacity:.3;pointer-events:none}
+.quote__bg svg{width:100%;height:100%}
+.quote blockquote{position:relative;font-family:var(--ff-display);font-weight:400;
+  font-size:clamp(1.9rem,5vw,4rem);line-height:1.08;letter-spacing:-.025em;max-width:19ch}
+.quote blockquote i{font-style:italic;color:var(--brand-on-ink)}
+.quote .u{position:relative;display:inline-block}
+.quote .u::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:2px;background:var(--brand-on-ink);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform 1.1s var(--ease-out) .4s}
+.quote .u.in::after{transform:scaleX(1)}
+.quote figcaption{margin-top:clamp(30px,4vw,48px);display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font:500 .6875rem/1.5 var(--ff-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--on-ink-muted)}
+.quote figcaption b{color:var(--on-ink);font-weight:500}
+.quote figcaption::before{content:"";width:40px;height:var(--hair);background:var(--brand-on-ink);flex:none}
+
+/* ───────────────────────── §05 OFFICE PLOT ───────────────────────── */
+.plot{margin-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,56px)}
+@media(min-width:1000px){.plot{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}}
+.sheet{position:relative;border:var(--hair) solid var(--rule);background:var(--paper-2);padding:clamp(12px,2vw,20px)}
+.sheet svg{width:100%;height:auto}
+.sheet .grat{stroke:var(--rule);stroke-width:1.4;fill:none}
+.sheet .grat-m{stroke:var(--rule-soft);stroke-width:3;fill:none}
+.sheet .ring{stroke:var(--sea-3);stroke-width:2;fill:none;opacity:.85}
+.sheet .bearing{stroke:var(--rose);stroke-width:2.4;fill:none;opacity:.85;stroke-linecap:round}
+.sheet .lbl{font:500 17px/1 var(--ff-mono);letter-spacing:.08em;fill:var(--faint)}
+.sheet .lbl,.sheet .lbl-b{paint-order:stroke;stroke:var(--paper-2);stroke-width:7px;stroke-linejoin:round}
+.sheet .lbl-b{font:600 20px/1 var(--ff-mono);letter-spacing:.06em;fill:var(--brand-ink)}
+.sheet .fix{fill:var(--brand)}
+.sheet .fixring{stroke:var(--brand);stroke-width:3.2;fill:none}
+.sheet .halo{fill:none;stroke:var(--brand);stroke-width:2.2;opacity:.9;animation:halo 3.4s var(--ease) infinite}
+@keyframes halo{0%{r:14;opacity:.8}100%{r:76;opacity:0}}
+.js .sheet .drw{stroke-dasharray:var(--len,900);stroke-dashoffset:var(--len,900)}
+.js .sheet.in .drw{animation:draw 2.4s var(--ease-out) forwards}
+.js .sheet.in .drw.d2{animation-delay:.3s}
+.js .sheet.in .drw.d3{animation-delay:.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.addr{border-top:var(--hair) solid var(--rule)}
+.addr>div{padding:20px 0;border-bottom:var(--hair) solid var(--rule)}
+.addr dt{font:500 .625rem/1 var(--ff-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:9px}
+.addr dd{font-size:1rem;line-height:1.65;color:var(--ink)}
+.addr dd strong{font-weight:600}
+.addr dd a{background-image:linear-gradient(var(--brand-ink),var(--brand-ink));
+  background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;
+  transition:background-size .45s var(--ease-out),color .3s}
+.addr dd a:hover{background-size:100% 1px;color:var(--brand-ink)}
+.addr small{display:block;margin-top:6px;font:400 .6875rem/1.5 var(--ff-mono);letter-spacing:.08em;color:var(--faint)}
+
+/* ───────────────────────── CONTACT ───────────────────────── */
+.contact__grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vw,80px);margin-top:clamp(40px,6vw,64px)}
+@media(min-width:980px){.contact__grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+form{border-top:var(--hair) solid var(--rule)}
+.fgrid{display:grid;grid-template-columns:1fr}
+@media(min-width:620px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.f--full{grid-column:1/-1}}
+.f{display:flex;flex-direction:column;gap:7px;padding:18px 0;border-bottom:var(--hair) solid var(--rule)}
+@media(min-width:620px){
+  .f:not(.f--full){border-right:var(--hair) solid var(--rule);padding-right:20px}
+  .f--full{padding-right:0}
+  .fgrid>.f:nth-child(2n){border-right:0;padding-left:20px;padding-right:0}
+}
+.f label{display:flex;align-items:baseline;gap:9px;font:500 .625rem/1 var(--ff-mono);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.f label i{font-style:normal;color:var(--rule)}
+.f label b{color:var(--brand-ink);font-weight:500}
+.f input,.f select,.f textarea{width:100%;min-height:44px;padding:8px 0;background:transparent;
+  border:0;border-bottom:var(--hair) solid var(--rule);font-size:1.0625rem;color:var(--ink);
+  transition:border-color .35s var(--ease)}
+.f textarea{min-height:104px;resize:vertical;line-height:1.6;font-size:1rem}
+.f select{cursor:pointer;appearance:none;padding-right:26px;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 11px) 20px,calc(100% - 6px) 20px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.f input::placeholder,.f textarea::placeholder{color:var(--faint);opacity:.75}
+.f input:hover,.f select:hover,.f textarea:hover{border-bottom-color:var(--faint)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-bottom-color:var(--brand-ink);border-bottom-width:2px}
+.f input[aria-invalid="true"],.f textarea[aria-invalid="true"]{border-bottom-color:var(--rose);border-bottom-width:2px}
+.f .hint{font:400 .75rem/1.4 var(--ff-mono);letter-spacing:.04em;color:var(--faint)}
+.err{display:none;font:500 .75rem/1.4 var(--ff-mono);letter-spacing:.04em;color:var(--rose)}
+.err.on{display:block}
+.fsend{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:26px}
+.fsend p{font:400 .75rem/1.5 var(--ff-mono);letter-spacing:.04em;color:var(--faint);max-width:40ch}
+.ok{display:none;gap:14px;align-items:flex-start;padding:18px 20px;margin-bottom:4px;
+  border:var(--hair) solid var(--brand-ink);background:var(--brand-wash)}
+.ok.on{display:flex}
+.ok b{display:block;font:500 .6875rem/1 var(--ff-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:7px}
+.ok p{font-size:.9375rem;line-height:1.6;color:var(--muted)}
+.ok i{width:8px;height:8px;background:var(--brand-ink);flex:none;margin-top:5px;transform:rotate(45deg)}
+
+/* ───────────────────────── FOOTER ───────────────────────── */
+.ftr{background:var(--ink);color:var(--on-ink);padding-top:clamp(56px,8vw,96px);overflow:hidden}
+.ftr__top{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,56px);padding-bottom:clamp(44px,6vw,72px)}
+@media(min-width:760px){.ftr__top{grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr))}}
+@media(min-width:1060px){.ftr__top{grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr))}}
+.ftr__top p{color:var(--on-ink-muted);line-height:1.7;font-size:.9375rem;max-width:40ch;margin-top:22px}
+.wordmark{display:block;font-family:var(--ff-display);font-size:1.75rem;
+  letter-spacing:.01em;line-height:1.05;color:var(--on-ink)}
+.wordmark span{display:block;margin-top:9px;font:500 .5625rem/1.5 var(--ff-mono);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--brand-on-ink)}
+.ftr h4{font:500 .625rem/1 var(--ff-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--brand-on-ink);margin-bottom:18px}
+.ftr__col a,.ftr__col span{display:inline-flex;align-items:center;min-height:36px;font-size:.9375rem;
+  color:var(--on-ink-muted);transition:color .3s var(--ease)}
+.ftr__col a:hover{color:var(--on-ink)}
+.ftr__certs{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.ftr__certs li{font:400 .625rem/1 var(--ff-mono);letter-spacing:.12em;color:var(--on-ink-muted);
+  border:var(--hair) solid var(--on-ink-rule);padding:5px 8px}
+.ftr .ftr__word{
+  border-top:var(--hair) solid var(--on-ink-rule);padding-top:clamp(24px,3vw,36px);margin-top:0;max-width:none;
+  font-family:var(--ff-display);font-weight:400;line-height:.78;letter-spacing:-.04em;
+  font-size:clamp(2.9rem,14.2vw,14rem);color:var(--on-ink);white-space:nowrap;margin-bottom:-.05em;user-select:none;
+}
+.ftr .ftr__word span{color:var(--brand-on-ink)}
+.ftr__btm{border-top:var(--hair) solid var(--on-ink-rule);padding-block:22px;
+  display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;
+  font:400 .6875rem/1.5 var(--ff-mono);letter-spacing:.1em;color:var(--on-ink-muted)}
+.ftr__btm ul{display:flex;flex-wrap:wrap;gap:22px}
+.ftr__btm a:hover{color:var(--on-ink)}
+
+/* ───────────────────────── chart svg shared ───────────────────────── */
+.grid-l{stroke:var(--rule);stroke-width:.65;fill:none}
+.iso{stroke:var(--sea-3);stroke-width:1.2;fill:none}
+.iso-f{fill:var(--sea-1);opacity:.32;stroke:none}
+.iso-f2{fill:var(--sea-2);opacity:.24;stroke:none}
+.snd{font:400 10px/1 var(--ff-mono);fill:var(--sea-3);opacity:.9}
+.rose-l{stroke:var(--rule);fill:none;stroke-width:.8}
+.rose-n{fill:var(--rose)}
+.caution{stroke:var(--rose);stroke-width:1.2;fill:var(--rose-soft);stroke-dasharray:6 5}
+.track{stroke:var(--brand-ink);stroke-width:1.4;fill:none;stroke-dasharray:9 6}
+.ship{fill:var(--brand-ink)}
+.js .draw{stroke-dasharray:var(--len,2400);stroke-dashoffset:var(--len,2400)}
+.js .hero .draw{animation:draw 2.6s var(--ease-out) forwards}
+.js .hero .draw.d2{animation-delay:.25s}
+.js .hero .draw.d3{animation-delay:.5s}
+.js .fade-el{opacity:0;animation:fadeIn 1.4s var(--ease) .5s forwards}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ───────────────────────── touch devices ───────────────────────── */
+@media(hover:none){
+  /* list links need a 44px target where there is no cursor to aim with */
+  .ftr__col a,.ftr__col span{min-height:44px}
+  .ftr__btm ul a{display:inline-flex;align-items:center;min-height:44px}
+  .drawer__foot .mono{display:inline-flex;align-items:center;min-height:44px}
+  .hero__in{cursor:auto}
+  /* the chart is decorative; keep it lighter on a phone GPU */
+  .hero__chart{opacity:.85}
+}
+
+/* ───────────────────────── motion / print ───────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .ticker__track{animation:none}
+  .js .rv{opacity:1;transform:none}
+  h1 .ln>span,.js h1 .ln>span{transform:none}
+  .js .hero__lede,.js .hero__act{opacity:1;transform:none}
+  .js .plate .logo{opacity:1;transform:none}
+  .js .draw,.js .sheet .drw{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+  .js .fade-el{opacity:1;animation:none}
+  .quote .u::after{transform:scaleX(1)}
+  .sheet .halo{animation:none;opacity:0}
+}
+@media print{
+  .hdr,.drawer,.grain,.progress,.ticker,.hero__chart,.sheet,form{display:none}
+  body{background:#fff;color:#000}
+  .sec--ink,.quote,.ftr{background:#fff;color:#000}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="mark" href="#top" aria-label="Orsarica Shipping L.L.C - FZ — home">
+      <img class="logo" src="logo.jpg" width="612" height="408" alt="Orsarica Shipping" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        <li><a href="#scope"><i>01</i>Scope</a></li>
+        <li><a href="#vessel"><i>02</i>Vessel</a></li>
+        <li><a href="#doctrine"><i>03</i>Doctrine</a></li>
+        <li><a href="#passage"><i>04</i>Takeover</a></li>
+        <li><a href="#office"><i>05</i>Office</a></li>
+      </ul>
+    </nav>
+
+    <div class="hdr__act">
+      <a class="btn hdr__cta" href="#contact"><span>Enquire</span></a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="wrap">
+    <ol>
+      <li><a href="#scope"><i>01</i>Scope</a></li>
+      <li><a href="#vessel"><i>02</i>Vessel</a></li>
+      <li><a href="#doctrine"><i>03</i>Doctrine</a></li>
+      <li><a href="#passage"><i>04</i>Takeover</a></li>
+      <li><a href="#office"><i>05</i>Office</a></li>
+      <li><a href="#contact"><i>06</i>Contact</a></li>
+    </ol>
+    <div class="drawer__foot">
+      <a class="btn btn--solid" href="#contact"><span>Request a proposal</span></a>
+      <a class="mono" href="mailto:office@orsaricashipping.com">office@orsaricashipping.com</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="hero">
+  <div class="hero__chart" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <g class="grid-l">
+        <path d="M0 100h1600M0 220h1600M0 340h1600M0 460h1600M0 580h1600M0 700h1600M0 820h1600"/>
+        <path d="M120 0v900M280 0v900M440 0v900M600 0v900M760 0v900M920 0v900M1080 0v900M1240 0v900M1400 0v900M1560 0v900"/>
+      </g>
+
+      <path class="iso-f" d="M1010 120c160-30 330 10 420 120s70 260-40 340-300 120-430 60-210-210-170-330 120-170 220-190Z"/>
+      <path class="iso-f2" d="M1060 190c120-24 250 8 318 92s52 198-30 258-228 92-326 46-160-160-130-250 90-130 168-146Z"/>
+      <path class="iso draw d2" style="--len:1900" d="M1010 120c160-30 330 10 420 120s70 260-40 340-300 120-430 60-210-210-170-330 120-170 220-190Z"/>
+      <path class="iso draw d3" style="--len:1500" d="M1060 190c120-24 250 8 318 92s52 198-30 258-228 92-326 46-160-160-130-250 90-130 168-146Z"/>
+      <path class="iso draw" style="--len:1100;opacity:.6" d="M1118 262c84-16 174 6 220 64s36 136-20 178-158 64-226 32-110-110-90-172 62-90 116-102Z"/>
+
+      <g class="fade-el">
+        <circle class="caution" cx="1152" cy="792" r="78"/>
+        <text class="snd" x="1104" y="796" style="fill:var(--rose);font-size:11px">RESTRICTED</text>
+      </g>
+
+      <g class="snd fade-el">
+        <text x="150" y="160">38</text><text x="268" y="246">41</text><text x="92" y="330">27</text>
+        <text x="330" y="128">52</text><text x="470" y="236">63</text><text x="214" y="432">19</text>
+        <text x="600" y="150">74</text><text x="548" y="372">58</text><text x="398" y="300">44</text>
+        <text x="690" y="440">81</text><text x="760" y="248">96</text><text x="862" y="372">110</text>
+        <text x="300" y="560">22</text><text x="520" y="610">36</text><text x="650" y="730">47</text>
+        <text x="880" y="640">88</text><text x="1020" y="760">64</text><text x="1180" y="700">51</text>
+        <text x="1310" y="214">126</text><text x="1452" y="330">148</text><text x="1500" y="620">92</text>
+        <text x="120" y="770">14</text><text x="250" y="836">9</text><text x="980" y="196">102</text>
+        <text x="1150" y="112">134</text><text x="760" y="836">39</text><text x="1390" y="792">70</text>
+      </g>
+
+      <g transform="translate(1300 650)" class="fade-el">
+        <g>
+          <circle class="rose-l" r="92"/><circle class="rose-l" r="68"/><circle class="rose-l" r="12"/>
+          <path class="rose-l" d="M0-92V92M-92 0H92"/>
+          <path class="rose-l" d="M-65-65 65 65M-65 65 65-65" opacity=".55"/>
+          <path class="rose-n" d="M0-92 9-18 0-8-9-18Z"/>
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="190s" repeatCount="indefinite"/>
+        </g>
+        <text class="snd" x="-6" y="-100" style="fill:var(--rose);font-size:11px">N</text>
+      </g>
+
+      <path id="trk" class="track draw" style="--len:2600" d="M-40 812C180 790 300 700 470 652s330-10 500-86 286-212 460-236"/>
+      <g class="ship fade-el">
+        <path d="M-10-5 12 0-10 5-6 0Z"/>
+        <animateMotion dur="56s" repeatCount="indefinite" rotate="auto"><mpath href="#trk"/></animateMotion>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero__in">
+    <p class="hero__eyebrow mono">
+      <em><span class="pulse" aria-hidden="true"></span>On watch</em>
+      <b>Crude oil tanker management</b>
+      <span>Dubai · U.A.E.</span>
+    </p>
+
+    <h1>
+      <span class="ln"><span>A ship earns</span></span>
+      <span class="ln"><span><em>nothing</em></span></span>
+      <span class="ln"><span>at anchor.</span></span>
+    </h1>
+
+    <p class="hero__lede">
+      Orsarica Shipping is an owner-side technical manager for crude oil tankers,
+      working out of Dubai. We keep tonnage in class, off the detention list and
+      under way — and we show you the arithmetic behind every decision.
+    </p>
+
+    <div class="hero__act">
+      <a class="btn btn--solid" href="#contact"><span>Request a proposal
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M12 5l7 7-7 7"/></svg></span></a>
+      <a class="btn" href="#scope"><span>Scope of management</span></a>
+    </div>
+  </div>
+
+  <div class="bridge">
+    <dl class="wrap" style="padding:0">
+      <ul>
+        <li><dt>Position</dt><dd>25°09′N 055°18′E</dd></li>
+        <li><dt>Trade</dt><dd>Crude oil · <b>Tankers</b></dd></li>
+        <li><dt>Duty officer</dt><dd class="row"><span class="pulse" aria-hidden="true"></span>On watch</dd></li>
+        <li><dt>Local time (GST)</dt><dd><span id="clock">—</span></dd></li>
+      </ul>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker" id="ticker" aria-label="Loading terminals and standards">
+  <button class="ticker__pause" id="ticker-btn" type="button" aria-pressed="false" aria-label="Pause the moving list">
+    <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+    <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>
+  </button>
+  <div class="ticker__track">
+    <ul class="ticker__set">
+      <li>Ras Tanura</li><li>Jebel Dhanna</li><li>Fujairah</li><li>ISM Code</li><li>Basrah</li>
+      <li>Juaymah</li><li>Ruwais</li><li>ISO 9001</li><li>Mina Al Ahmadi</li><li>Sikka</li>
+      <li>Yanbu</li><li>MARPOL Annex I</li><li>Rotterdam</li><li>Ningbo</li><li>MLC 2006</li>
+      <li>Singapore</li><li>Suez</li><li>SIRE 2.0</li><li>Gibraltar</li><li>Hormuz</li>
+    </ul>
+    <ul class="ticker__set" aria-hidden="true">
+      <li>Ras Tanura</li><li>Jebel Dhanna</li><li>Fujairah</li><li>ISM Code</li><li>Basrah</li>
+      <li>Juaymah</li><li>Ruwais</li><li>ISO 9001</li><li>Mina Al Ahmadi</li><li>Sikka</li>
+      <li>Yanbu</li><li>MARPOL Annex I</li><li>Rotterdam</li><li>Ningbo</li><li>MLC 2006</li>
+      <li>Singapore</li><li>Suez</li><li>SIRE 2.0</li><li>Gibraltar</li><li>Hormuz</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════ STATEMENT + LOGO ══════════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="stmt">
+      <div class="stmt__grid">
+        <div>
+          <h2 class="rv">Crude oil tankers. <i>That is the whole list.</i></h2>
+          <p class="stmt__body rv">
+            Specialisation is not a limitation here, it is the method. Cargo tank
+            coatings, inert gas plant, crude oil washing, pump room integrity and the
+            vetting regimes are not a chapter in our manual — they are the manual. An
+            owner talking to us never has to explain how a tanker earns its money.
+          </p>
+        </div>
+
+        <div class="plate rv">
+          <svg class="plate__grid" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+            <g class="grid-l">
+              <path d="M0 50h400M0 100h400M0 150h400M0 200h400M0 250h400"/>
+              <path d="M50 0v300M100 0v300M150 0v300M200 0v300M250 0v300M300 0v300M350 0v300"/>
+            </g>
+          </svg>
+          <img class="logo" src="logo.jpg" width="612" height="408" alt="" decoding="async">
+          <p class="plate__cap"><span>Orsarica Shipping L.L.C - FZ</span><span>Dubai</span></p>
+        </div>
+      </div>
+
+      <dl class="notes">
+        <div class="note rv"><dt>Standing</dt><dd>Owner-side. We work for the vessel's owner, and for nobody on the other side of a quotation.</dd></div>
+        <div class="note rv"><dt>Discipline</dt><dd>Crude oil tankers. No segment we have to learn on your account.</dd></div>
+        <div class="note rv"><dt>Attendance</dt><dd>Dubai-based, at the centre of the Arabian Gulf trade, attending worldwide.</dd></div>
+        <div class="note rv"><dt>Availability</dt><dd>A duty superintendent is reachable at any hour — casualties, detentions, technical emergencies.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ §01 SCOPE ══════════ -->
+<section class="sec" id="scope">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 01 <span>Scope of management</span></p>
+      <h2 class="h2 rv">Everything between the owner and the <i>engine room.</i></h2>
+      <p class="lede rv">
+        Eight disciplines, one accountable team. Take the full scope or bolt on a
+        single workstream — the reporting line does not change.
+      </p>
+    </div>
+
+    <div class="index">
+      <details class="item rv" open>
+        <summary>
+          <span class="item__n">01</span>
+          <span class="item__t">Maintenance &amp; PMS</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Planned maintenance kept honest — criticality-ranked spares, defect registers that actually close.</span>
+        </summary>
+        <div class="item__body">
+          <p>The maintenance plan is built from the maker's manual and then corrected by what the machinery is really doing. Running hours, vibration and lube-oil analysis feed the plan; a defect that slips twice is escalated to the owner in writing, not quietly re-dated.</p>
+          <ul class="specs">
+            <li><span>Maintenance plan</span><b>Condition-corrected</b></li>
+            <li><span>Critical spares on board</span><b>Ranked list</b></li>
+            <li><span>Defect ageing report</span><b>Monthly</b></li>
+            <li><span>Emergency repair coordination</span><b>Round the clock</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">02</span>
+          <span class="item__t">Class, flag &amp; vetting</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Surveys planned a window ahead; inspections prepared with the crew, not sprung on them.</span>
+        </summary>
+        <div class="item__body">
+          <p>Statutory and class surveys sit on a rolling calendar well ahead of their windows. SIRE 2.0 and CDI preparation is run on board with the officers, including the human-factors elements that now carry the observations. Port state readiness is checked against the current Paris and Tokyo MoU concentrated inspection campaigns.</p>
+          <ul class="specs">
+            <li><span>Class societies</span><b>IACS members</b></li>
+            <li><span>Tanker vetting</span><b>SIRE 2.0 · CDI</b></li>
+            <li><span>Port state readiness</span><b>Both MoU regimes</b></li>
+            <li><span>Flag administration</span><b>Managed in house</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">03</span>
+          <span class="item__t">Procurement &amp; logistics</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Open book. Three quotes as standard, landed cost as the metric, no undisclosed rebates.</span>
+        </summary>
+        <div class="item__body">
+          <p>Spares, stores, lubricants and bunkers through an audited supplier panel in the ports our trade touches. We have no in-house trading arm and take no supplier commission — our management fee is the only money we make from your vessel, and the quote file is open to you at any time.</p>
+          <ul class="specs">
+            <li><span>Quotes per requisition</span><b>Three minimum</b></li>
+            <li><span>Pricing basis</span><b>Landed cost</b></li>
+            <li><span>Supplier audit cycle</span><b>Annual</b></li>
+            <li><span>Owner access to quote file</span><b>Unrestricted</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">04</span>
+          <span class="item__t">Drydocking &amp; projects</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Specification, tendering, site supervision and change-order discipline — retrofits run as projects, not surprises.</span>
+        </summary>
+        <div class="item__body">
+          <p>Docking starts well before the window with a condition-based scope rather than a copied specification. We tender to pre-qualified yards in the main repair centres, place our own site team for the duration, and hold a signed change-order log the owner can read daily.</p>
+          <ul class="specs">
+            <li><span>Scope preparation</span><b>Condition-based</b></li>
+            <li><span>Repair yards</span><b>Pre-qualified panel</b></li>
+            <li><span>Site supervision</span><b>Own team</b></li>
+            <li><span>Change-order log</span><b>Daily</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">05</span>
+          <span class="item__t">Crew technical support</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Competency matrices for the actual machinery fit, and familiarisation before joining.</span>
+        </summary>
+        <div class="item__body">
+          <p>We work alongside the crew manager rather than around them. Senior officers are briefed on the specific machinery and cargo system before they join, familiarisation is verified on board rather than signed off ashore, and MLC 2006 conditions are checked at every superintendent attendance.</p>
+          <ul class="specs">
+            <li><span>Pre-joining briefing</span><b>Senior officers</b></li>
+            <li><span>Familiarisation check</span><b>On board</b></li>
+            <li><span>MLC 2006 verification</span><b>Every attendance</b></li>
+            <li><span>Tanker endorsements</span><b>Tracked per rank</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">06</span>
+          <span class="item__t">Reporting &amp; OPEX control</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">Budget against actual at account level, in a dashboard you open without asking us.</span>
+        </summary>
+        <div class="item__body">
+          <p>A monthly technical report: condition, open defects by age, budget versus actual by account, and what changed since last month. Every figure in it is a figure the superintendent also works from. The owner holds their own dashboard credentials.</p>
+          <ul class="specs">
+            <li><span>Technical report</span><b>Monthly</b></li>
+            <li><span>Budget granularity</span><b>Account level</b></li>
+            <li><span>Owner dashboard</span><b>Live</b></li>
+            <li><span>Condition survey</span><b>On request</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">07</span>
+          <span class="item__t">QHSE &amp; management systems</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">ISM, ISPS and the ISO trio as working documents, with root cause pursued past the convenient answer.</span>
+        </summary>
+        <div class="item__body">
+          <p>A safety management system nobody reads is a liability. Ours is written for the people using it, audited on a published calendar, and revised when the ship tells us it is wrong. Incident investigation goes to root cause — "crew error" is a symptom, not a finding — and corrective actions are tracked to closure.</p>
+          <ul class="specs">
+            <li><span>Certification</span><b>ISM · ISPS</b></li>
+            <li><span>Standards</span><b>9001 · 14001 · 45001</b></li>
+            <li><span>Internal audit</span><b>Published calendar</b></li>
+            <li><span>Investigation</span><b>To root cause</b></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item rv">
+        <summary>
+          <span class="item__n">08</span>
+          <span class="item__t">Performance &amp; decarbonisation</span>
+          <span class="item__sign" aria-hidden="true"></span>
+          <span class="item__sum">CII trajectory, hull and propeller condition, and the reporting the EU now demands.</span>
+        </summary>
+        <div class="item__body">
+          <p>Noon reports and torque data are reconciled against weather hindcast so hull fouling is separated from the voyage. The vessel carries a multi-year CII trajectory with the intervention points marked. EU ETS surrender and FuelEU Maritime reporting are prepared ahead of the deadline, not against it.</p>
+          <ul class="specs">
+            <li><span>Performance basis</span><b>Weather-corrected</b></li>
+            <li><span>CII trajectory</span><b>Mapped ahead</b></li>
+            <li><span>Regulatory reporting</span><b>EU ETS · FuelEU</b></li>
+            <li><span>Hull cleaning trigger</span><b>Condition-based</b></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ §02 VESSEL ANATOMY ══════════ -->
+<section class="sec" id="vessel">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 02 <span>The vessel</span></p>
+      <h2 class="h2 rv">A crude oil tanker, <i>system by system.</i></h2>
+      <p class="lede rv">
+        What a superintendent actually walks through on boarding. Scroll the list —
+        the profile follows.
+      </p>
+    </div>
+
+    <div class="anat__grid">
+      <div class="stage" aria-hidden="true">
+        <div class="stage__view">
+          <svg viewBox="0 0 1000 392">
+            <!-- summer load line -->
+            <path class="wline" d="M18 296H982"/>
+
+            <!-- ZONE: hull & ballast tanks (underwater body) -->
+            <g class="zone" data-zone="hull">
+              <path class="zone__fill" d="M112 296h752l-20 34q-366 15-714 0Z"/>
+              <path class="zone__mark" d="M112 296h752l-20 34q-366 15-714 0Z"/>
+            </g>
+
+            <!-- ZONE: cargo tanks -->
+            <g class="zone" data-zone="tanks">
+              <rect class="zone__fill" x="160" y="228" width="320" height="68"/>
+              <g class="zone__mark"><path d="M224 228v68M288 228v68M352 228v68M416 228v68"/></g>
+            </g>
+
+            <!-- ZONE: manifold & pump room -->
+            <g class="zone" data-zone="manifold">
+              <rect class="zone__fill" x="480" y="186" width="120" height="110"/>
+              <g class="zone__mark">
+                <path d="M498 204h84M516 204v-18M564 204v-18M540 204v92M498 240h84"/>
+              </g>
+            </g>
+
+            <!-- ZONE: inert gas & venting -->
+            <g class="zone" data-zone="ig">
+              <rect class="zone__fill" x="600" y="168" width="116" height="128"/>
+              <g class="zone__mark">
+                <path d="M624 228v-52M624 176h44M668 176v-26M690 228v-36M690 192h-22"/>
+              </g>
+            </g>
+
+            <!-- ZONE: machinery space -->
+            <g class="zone" data-zone="engine">
+              <rect class="zone__fill" x="716" y="228" width="146" height="68"/>
+              <g class="zone__mark"><path d="M744 264h78M784 244v40M732 244v40M844 244v40"/></g>
+            </g>
+
+            <!-- ZONE: accommodation & bridge -->
+            <g class="zone" data-zone="accom">
+              <path class="zone__fill" d="M720 228v-98h126v98Z"/>
+              <g class="zone__mark"><path d="M786 130V88h30v42M730 152h106M730 178h106M730 204h106"/></g>
+            </g>
+
+            <!-- ── base vessel outline, always drawn on top ── -->
+            <!-- hull: forecastle, flush main deck, stern -->
+            <path class="hull" d="M72 212h80v16h724l-12 68H112Z"/>
+            <!-- underwater body + bilge -->
+            <path class="detail" d="M112 296h752l-20 34q-366 15-714 0Z"/>
+            <!-- stem rake -->
+            <path class="detail" d="M72 212l-16 42 32 16"/>
+            <!-- accommodation block + funnel -->
+            <path class="hull" d="M720 228v-98h126v98"/>
+            <path class="detail" d="M786 130V88h30v42"/>
+            <path class="detail" d="M730 152h106M730 178h106M730 204h106"/>
+            <!-- deck pipeline, vent risers, manifold platform -->
+            <path class="detail" d="M160 216h556"/>
+            <path class="detail" d="M196 216v12M252 216v12M308 216v12M364 216v12M420 216v12"/>
+            <path class="detail" d="M224 216v-22M352 216v-22M470 216v-30"/>
+            <path class="detail" d="M498 204h84M516 204v12M564 204v12"/>
+            <!-- IG deck main + riser -->
+            <path class="detail" d="M624 216v-40M624 176h44M668 176v-26"/>
+            <!-- foremast -->
+            <path class="detail" d="M110 212v-44M96 168h28"/>
+            <!-- propeller & rudder -->
+            <path class="detail" d="M864 300l22 14-22 14ZM878 296v38"/>
+
+            <!-- measuring caliper -->
+            <g id="caliper">
+              <line id="cal-span" x1="160" y1="358" x2="480" y2="358"/>
+              <line id="cal-l" x1="160" y1="348" x2="160" y2="368"/>
+              <line id="cal-r" x1="480" y1="348" x2="480" y2="368"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="stage__meta">
+          <p><span class="stage__idx" id="stage-idx">01 / 06</span><br><span class="stage__name" id="stage-name">Cargo tanks &amp; coatings</span></p>
+          <p class="stage__spec" id="stage-spec">Coating condition<br>governs the cargo list</p>
+        </div>
+      </div>
+
+      <ol class="segs">
+        <li class="seg" data-zone="tanks" data-name="Cargo tanks &amp; coatings" data-spec="Coating condition<br>governs the cargo list" data-idx="01 / 06" data-cx="160" data-cw="320">
+          <p class="seg__k">01 <em>— Cargo space</em></p>
+          <h3>Cargo tanks &amp; coatings</h3>
+          <p>Coating breakdown and pitting in the cargo tanks decide what the vessel may load and how long she stays on class. Surveys run on a fixed cycle rather than when something is found, and repair scopes are written against the real trading pattern, not the design one.</p>
+          <ul class="seg__tags"><li>Coating survey</li><li>Pitting repair</li><li>Anodes</li><li>Tank cleaning</li></ul>
+        </li>
+
+        <li class="seg" data-zone="manifold" data-name="Manifold &amp; pump room" data-spec="Discharge rate is<br>the commercial clock" data-idx="02 / 06" data-cx="480" data-cw="120">
+          <p class="seg__k">02 <em>— Cargo handling</em></p>
+          <h3>Manifold &amp; pump room</h3>
+          <p>Discharge rate is the commercial clock at every terminal, and the pump room is where a tanker's risk is most concentrated. Cargo pump performance, gas detection, bilge alarms and manifold condition are monitored and tested, never assumed.</p>
+          <ul class="seg__tags"><li>Cargo pumps</li><li>Gas detection</li><li>Manifold</li><li>COW lines</li></ul>
+        </li>
+
+        <li class="seg" data-zone="ig" data-name="Inert gas &amp; venting" data-spec="No IG, no cargo —<br>there is no workaround" data-idx="03 / 06" data-cx="600" data-cw="116">
+          <p class="seg__k">03 <em>— Safety system</em></p>
+          <h3>Inert gas &amp; venting</h3>
+          <p>No inert gas means no cargo, and there is no workaround at the berth. Scrubber, blowers, deck seal, P/V valves and oxygen analysers are kept inside their tolerances, with calibration records that survive a vetting inspection rather than merely exist.</p>
+          <ul class="seg__tags"><li>IG plant</li><li>Deck seal</li><li>P/V valves</li><li>O₂ analysers</li></ul>
+        </li>
+
+        <li class="seg" data-zone="hull" data-name="Hull &amp; ballast tanks" data-spec="Steel condition and<br>fouling, measured" data-idx="04 / 06" data-cx="112" data-cw="752">
+          <p class="seg__k">04 <em>— Structure</em></p>
+          <h3>Hull &amp; ballast tanks</h3>
+          <p>Ballast tank coatings and steel renewal drive the biggest line in any docking budget, so they are surveyed early and planned for, never discovered. Hull and propeller fouling is separated from the weather before anybody is billed for a cleaning.</p>
+          <ul class="seg__tags"><li>Ballast coatings</li><li>Steel renewal</li><li>BWTS</li><li>Hull performance</li></ul>
+        </li>
+
+        <li class="seg" data-zone="engine" data-name="Machinery space" data-spec="Main engine, boilers,<br>auxiliaries" data-idx="05 / 06" data-cx="716" data-cw="146">
+          <p class="seg__k">05 <em>— Propulsion</em></p>
+          <h3>Machinery space</h3>
+          <p>Main engine performance, boiler condition and auxiliary reliability decide whether a fixture is kept. Cylinder condition monitoring, turbocharger and fuel system management run against the actual fuel in the tanks, not the grade on the bunker note.</p>
+          <ul class="seg__tags"><li>Main engine</li><li>Boilers</li><li>Turbochargers</li><li>Fuel treatment</li></ul>
+        </li>
+
+        <li class="seg" data-zone="accom" data-name="Accommodation &amp; bridge" data-spec="Where the inspection<br>actually begins" data-idx="06 / 06" data-cx="720" data-cw="126">
+          <p class="seg__k">06 <em>— The people</em></p>
+          <h3>Accommodation &amp; bridge</h3>
+          <p>Every vetting inspection really begins here: navigation equipment and records, bridge procedures, living conditions and the state of the paperwork. MLC 2006 compliance is checked where the crew live, not in a folder ashore.</p>
+          <ul class="seg__tags"><li>Navigation</li><li>Bridge procedures</li><li>MLC 2006</li><li>Records</li></ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ §03 DOCTRINE ══════════ -->
+<section class="sec sec--ink" id="doctrine">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 03 <span>Doctrine</span></p>
+      <h2 class="h2 rv">Commitments we are willing to be <i>measured against.</i></h2>
+      <p class="lede rv">
+        Technical management is a trust business, so we put the terms in writing.
+        Each of these is a clause in our management agreement, not a slogan.
+      </p>
+    </div>
+
+    <div class="doctrine">
+      <article class="dr"><p class="dr__n">01</p><h3>Superintendents, not coordinators</h3>
+        <p>Our technical superintendents are former Chief Engineers and Masters with class-recognised qualifications and tanker time behind them. The person who answers your call has personally run the machinery under discussion.</p></article>
+
+      <article class="dr"><p class="dr__n">02</p><h3>Attention is never spread thin</h3>
+        <p>A superintendent's portfolio is capped, and the cap does not move to accommodate new business — we add superintendents instead. The ratio is printed in the monthly report so you can see it has not quietly drifted.</p></article>
+
+      <article class="dr"><p class="dr__n">03</p><h3>Open-book procurement</h3>
+        <p>No undisclosed supplier rebates and no in-house trading arm. You see the quotes we received, the one we chose and why. Our management fee is the only money we make from your vessel.</p></article>
+
+      <article class="dr"><p class="dr__n">04</p><h3>Yards and suppliers on standing terms</h3>
+        <p>Pre-negotiated terms with repair yards in the main centres — the Gulf, Türkiye, China and northern Europe — and an audited spares panel in the ports the crude trade actually touches. Response in an unfamiliar port is a problem we solved before you had it.</p></article>
+
+      <article class="dr"><p class="dr__n">05</p><h3>Regulation handled a cycle early</h3>
+        <p>IMO, flag and port state requirements are mapped well ahead of their dates — CII trajectory, ballast water compliance, EU ETS surrender. Compliance is a diary entry here, never an emergency.</p></article>
+
+      <article class="dr"><p class="dr__n">06</p><h3>Data only where it changes a decision</h3>
+        <p>Weather-corrected performance, condition monitoring and defect ageing feed the maintenance plan directly. We do not build dashboards that nobody acts on, and we do not charge you for them.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ §04 TAKEOVER ══════════ -->
+<section class="sec" id="passage">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 04 <span>Takeover</span></p>
+      <h2 class="h2 rv">From due diligence to steady state in <i>ninety days.</i></h2>
+      <p class="lede rv">
+        Changing technical manager is the riskiest month in a vessel's year. This is
+        the sequence we run — and the one you can hold us to.
+      </p>
+    </div>
+
+    <div class="plan" id="plan">
+      <div class="plan__rail" aria-hidden="true"><i id="plan-fill"></i></div>
+      <ol class="plan__grid">
+        <li class="leg">
+          <div class="leg__h"><span class="leg__p">Phase 01</span><span class="leg__t">2–3 weeks</span></div>
+          <h3>Technical due diligence</h3>
+          <ul>
+            <li>On-board condition inspection</li>
+            <li>Class and statutory record review</li>
+            <li>Open defect and spares audit</li>
+            <li>Historic OPEX reconstruction</li>
+            <li>Written gap report, with costings</li>
+          </ul>
+        </li>
+        <li class="leg">
+          <div class="leg__h"><span class="leg__p">Phase 02</span><span class="leg__t">30 days</span></div>
+          <h3>Takeover &amp; migration</h3>
+          <ul>
+            <li>SMS alignment and document control</li>
+            <li>PMS data migration and validation</li>
+            <li>Crew briefing and familiarisation</li>
+            <li>Supplier and agent novation</li>
+            <li>Flag, class and insurer notification</li>
+          </ul>
+        </li>
+        <li class="leg">
+          <div class="leg__h"><span class="leg__p">Phase 03</span><span class="leg__t">First 90 days</span></div>
+          <h3>Stabilisation</h3>
+          <ul>
+            <li>Critical defect closure programme</li>
+            <li>Budget rebased on actual condition</li>
+            <li>Vetting and inspection readiness</li>
+            <li>Weekly owner reporting cadence</li>
+            <li>First internal audit completed</li>
+          </ul>
+        </li>
+        <li class="leg">
+          <div class="leg__h"><span class="leg__p">Phase 04</span><span class="leg__t">Ongoing</span></div>
+          <h3>Continuous optimisation</h3>
+          <ul>
+            <li>Quarterly performance review</li>
+            <li>Docking and CAPEX horizon</li>
+            <li>Decarbonisation and CII roadmap</li>
+            <li>Procurement benchmarking</li>
+            <li>Annual agreement review</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ QUOTE ══════════ -->
+<section class="quote">
+  <div class="quote__bg" aria-hidden="true">
+    <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
+      <g class="grid-l" style="stroke:var(--on-ink-rule);stroke-width:1">
+        <path d="M0 80h1600M0 200h1600M0 320h1600M0 440h1600M0 560h1600"/>
+        <path d="M160 0v600M320 0v600M480 0v600M640 0v600M800 0v600M960 0v600M1120 0v600M1280 0v600M1440 0v600"/>
+      </g>
+      <path d="M-20 420C220 380 420 460 660 420s400-150 660-120 260 60 320 40" fill="none" stroke="var(--brand-on-ink)" stroke-width="1.5" stroke-dasharray="10 7" opacity=".5"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <figure>
+      <blockquote class="rv">
+        Every figure in our monthly report is one our superintendents also work from.
+        If it flatters us, <i class="u">it is not a report</i> — it is marketing.
+      </blockquote>
+      <figcaption class="rv"><b>Managing Director</b> — Orsarica Shipping L.L.C - FZ</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ §05 OFFICE ══════════ -->
+<section class="sec" id="office">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 05 <span>Office</span></p>
+      <h2 class="h2 rv">Dubai, <i>and the sea around it.</i></h2>
+      <p class="lede rv">
+        Working hours that overlap the Gulf loading terminals in the morning and
+        northern Europe in the afternoon. Attendance anywhere in the world inside
+        twenty-four hours.
+      </p>
+    </div>
+
+    <div class="plot">
+      <div class="sheet rv" aria-hidden="true">
+        <svg viewBox="0 0 1000 560">
+          <g class="grat">
+            <path d="M0 70h1000M0 140h1000M0 210h1000M0 280h1000M0 350h1000M0 420h1000M0 490h1000"/>
+            <path d="M70 0v560M140 0v560M210 0v560M280 0v560M350 0v560M420 0v560M490 0v560M560 0v560M630 0v560M700 0v560M770 0v560M840 0v560M910 0v560M980 0v560"/>
+          </g>
+          <g class="grat-m"><path d="M0 280h1000M490 0v560"/></g>
+
+          <circle class="ring drw" style="--len:600" cx="490" cy="280" r="92"/>
+          <circle class="ring drw d2" style="--len:1100" cx="490" cy="280" r="172"/>
+          <circle class="ring drw d3" style="--len:1600" cx="490" cy="280" r="248"/>
+
+          <path class="bearing drw d2" style="--len:320" d="M490 280 212 148"/>
+          <path class="bearing drw d2" style="--len:340" d="M490 280 806 170"/>
+          <path class="bearing drw d3" style="--len:350" d="M490 280 790 442"/>
+          <path class="bearing drw d3" style="--len:340" d="M490 280 190 430"/>
+
+          <text class="lbl" x="206" y="132">NW · SUEZ &amp; MED</text>
+          <text class="lbl" x="800" y="154" text-anchor="end">NE · FAR EAST</text>
+          <text class="lbl" x="784" y="466" text-anchor="end">SE · INDIAN OCEAN</text>
+          <text class="lbl" x="196" y="454">SW · CAPE</text>
+
+          <circle class="halo" cx="490" cy="280" r="14"/>
+          <circle class="fixring" cx="490" cy="280" r="13"/>
+          <circle class="fix" cx="490" cy="280" r="5"/>
+          <text class="lbl-b" x="520" y="270">DUBAI · U.A.E.</text>
+          <text class="lbl" x="520" y="296">25°09′N 055°18′E</text>
+
+          <text class="lbl" x="12" y="548">PLOTTING SHEET · NOT FOR NAVIGATION</text>
+          <text class="lbl" x="988" y="548" text-anchor="end">HEAD OFFICE</text>
+        </svg>
+      </div>
+
+      <dl class="addr rv">
+        <div>
+          <dt>Registered office</dt>
+          <dd>
+            <strong>Orsarica Shipping L.L.C - FZ</strong><br>
+            Meydan Grandstand, 6th floor,<br>
+            Meydan Road, Nad Al Sheba,<br>
+            Dubai, U.A.E.
+            <small>25.1572° N · 55.3008° E</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:office@orsaricashipping.com">office@orsaricashipping.com</a>
+          <small>Commercial and new business</small></dd>
+        </div>
+        <div>
+          <dt>Duty line</dt>
+          <dd><a href="tel:+97140000000">+971 4 000 0000</a>
+          <small>Casualties, detentions, technical emergencies</small></dd>
+        </div>
+        <div>
+          <dt>Office hours</dt>
+          <dd>Mon – Fri, 09:00 – 18:00 GST
+          <small>Superintendent on call outside these hours</small></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ §06 CONTACT ══════════ -->
+<section class="sec" id="contact" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="sec-mark rv">§ 06 <span>Enquiries</span></p>
+      <h2 class="h2 rv">Send the particulars. We send back <i>a scope.</i></h2>
+      <p class="lede rv">
+        Year built, flag, yard, trading pattern. Within five working days you will
+        have a named superintendent, a draft scope of management and an indicative fee.
+      </p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="rv">
+        <dl class="addr">
+          <div><dt>Write to us</dt>
+            <dd><a href="mailto:office@orsaricashipping.com">office@orsaricashipping.com</a></dd></div>
+          <div><dt>Visit</dt>
+            <dd>Meydan Grandstand, 6th floor,<br>Meydan Road, Nad Al Sheba,<br>Dubai, U.A.E.</dd></div>
+          <div><dt>Confidentiality</dt>
+            <dd>Enquiries are treated as commercially confidential and are not shared outside the technical team.</dd></div>
+        </dl>
+      </div>
+
+      <form id="enq" class="rv" novalidate>
+        <div class="ok" id="ok" role="status" aria-live="polite">
+          <i aria-hidden="true"></i>
+          <div><b>Ready to transmit</b><p id="ok-txt"></p></div>
+        </div>
+
+        <div class="fgrid">
+          <div class="f">
+            <label for="f-name"><i>01</i>Name <b aria-hidden="true">*</b></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+            <p class="err" id="e-name">↳ Required.</p>
+          </div>
+          <div class="f">
+            <label for="f-co"><i>02</i>Company</label>
+            <input id="f-co" name="company" type="text" autocomplete="organization">
+            <p class="hint">Owner, operator or manager</p>
+          </div>
+          <div class="f">
+            <label for="f-email"><i>03</i>Work email <b aria-hidden="true">*</b></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+            <p class="err" id="e-email">↳ Enter a valid address.</p>
+          </div>
+          <div class="f">
+            <label for="f-tel"><i>04</i>Telephone</label>
+            <input id="f-tel" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+            <p class="hint">Include country code</p>
+          </div>
+          <div class="f f--full">
+            <label for="f-type"><i>05</i>Enquiry</label>
+            <select id="f-type" name="type">
+              <option value="">Select</option>
+              <option>Full technical management</option>
+              <option>Drydocking project only</option>
+              <option>Vetting &amp; inspection readiness</option>
+              <option>Condition survey / due diligence</option>
+              <option>Newbuilding or conversion supervision</option>
+            </select>
+          </div>
+          <div class="f f--full">
+            <label for="f-msg"><i>06</i>Particulars <b aria-hidden="true">*</b></label>
+            <textarea id="f-msg" name="message" required aria-describedby="h-msg e-msg"
+              placeholder="Suezmax, built 2014, Marshall Islands flag, AG to Europe…"></textarea>
+            <p class="hint" id="h-msg">Minimum 20 characters</p>
+            <p class="err" id="e-msg">↳ Give us at least 20 characters to work with.</p>
+          </div>
+        </div>
+
+        <div class="fsend">
+          <p>Enquiries are treated as commercially confidential. Reply within one working day.</p>
+          <button class="btn btn--solid" type="submit"><span>Transmit enquiry
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M12 5l7 7-7 7"/></svg></span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="ftr on-ink">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div>
+        <a class="wordmark" href="#top">Orsarica Shipping
+          <span>L.L.C - FZ · Technical ship management</span>
+        </a>
+        <p>Owner-side technical management for crude oil tankers, from Dubai. Safety, class and performance — reported in figures you can audit.</p>
+        <ul class="ftr__certs">
+          <li>ISM</li><li>ISPS</li><li>ISO 9001</li><li>ISO 14001</li><li>ISO 45001</li><li>MLC 2006</li><li>MARPOL</li>
+        </ul>
+      </div>
+
+      <nav class="ftr__col" aria-label="Scope">
+        <h4>Scope</h4>
+        <ul>
+          <li><a href="#scope">Maintenance &amp; PMS</a></li>
+          <li><a href="#scope">Class &amp; vetting</a></li>
+          <li><a href="#scope">Procurement</a></li>
+          <li><a href="#scope">Drydocking</a></li>
+          <li><a href="#scope">QHSE</a></li>
+          <li><a href="#scope">Performance</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ftr__col" aria-label="Company">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#vessel">The vessel</a></li>
+          <li><a href="#doctrine">Doctrine</a></li>
+          <li><a href="#passage">Takeover</a></li>
+          <li><a href="#office">Office</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="ftr__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:office@orsaricashipping.com">office@orsaricashipping.com</a></li>
+          <li><a href="tel:+97140000000">+971 4 000 0000</a></li>
+          <li><span>Nad Al Sheba, Dubai</span></li>
+          <li><span>U.A.E.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="ftr__word" aria-hidden="true">ORSARICA<span>.</span></p>
+  </div>
+  <div class="wrap">
+    <div class="ftr__btm">
+      <p>© <span id="yr">2026</span> Orsarica Shipping L.L.C - FZ</p>
+      <ul>
+        <li><a href="#top">Privacy</a></li>
+        <li><a href="#top">Terms of business</a></li>
+        <li><a href="#top">Modern slavery statement</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var RM=window.matchMedia("(prefers-reduced-motion: reduce)");
+var $=function(s,c){return (c||document).querySelector(s)};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+/* the hero ignites from CSS alone; JS only stops the SVG motion */
+if(RM.matches){var hs=$(".hero__chart svg");if(hs&&hs.pauseAnimations)hs.pauseAnimations()}
+
+/* ── drawer ────────────────────────────────────────────── */
+var burger=$("#burger"),drawer=$("#drawer"),lastFocus=null;
+function setDrawer(open){
+  drawer.classList.toggle("is-open",open);
+  drawer.setAttribute("aria-hidden",String(!open));
+  burger.setAttribute("aria-expanded",String(open));
+  burger.setAttribute("aria-label",open?"Close menu":"Open menu");
+  document.body.style.overflow=open?"hidden":"";
+  if(open){lastFocus=document.activeElement;var f=drawer.querySelector("a");if(f)setTimeout(function(){f.focus()},260)}
+  else if(lastFocus){lastFocus.focus();lastFocus=null}
+}
+burger.addEventListener("click",function(){setDrawer(burger.getAttribute("aria-expanded")!=="true")});
+drawer.addEventListener("click",function(e){if(e.target.closest("a"))setDrawer(false)});
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"&&drawer.classList.contains("is-open"))setDrawer(false);
+});
+
+/* ── scroll: progress, header, plan fill, reveal sweep ──── */
+var hdr=$("#hdr"),bar=$(".progress"),plan=$("#plan"),fill=$("#plan-fill"),legs=$$(".leg"),ticking=false;
+function onScroll(){
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(function(){
+    var y=window.scrollY||0;
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.setProperty("--p",max>0?(y/max).toFixed(4):0);
+    hdr.classList.toggle("is-stuck",y>40);
+    if(plan&&fill){
+      var r=plan.getBoundingClientRect(),vh=window.innerHeight;
+      var p=(vh*0.82-r.top)/(r.height+vh*0.2);
+      p=Math.max(0,Math.min(1,p));
+      fill.style.setProperty("--fill",p.toFixed(4));
+      legs.forEach(function(l,i){l.classList.toggle("lit",p>=i/legs.length*0.92)});
+    }
+    sweep();
+    ticking=false;
+  });
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+window.addEventListener("resize",onScroll,{passive:true});
+
+/* ── reveals ───────────────────────────────────────────── */
+var rv=$$(".rv, .u");
+/* Backstop: anything at or above the fold is revealed outright, so a delayed
+   or throttled observer can never leave the page looking empty. */
+function sweep(){
+  if(!rv)return;
+  for(var i=0;i<rv.length;i++){
+    var e=rv[i];
+    if(e.classList.contains("in"))continue;
+    if(e.getBoundingClientRect().top<window.innerHeight+140)e.classList.add("in");
+  }
+}
+if(!("IntersectionObserver" in window)){rv.forEach(function(e){e.classList.add("in")})}
+else{
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting)return;
+      var p=en.target.parentElement;
+      var peers=p?$$(":scope > .rv",p):[];
+      var i=Math.max(0,peers.indexOf(en.target));
+      en.target.style.transitionDelay=Math.min(i,6)*70+"ms";
+      en.target.classList.add("in");
+      io.unobserve(en.target);
+    });
+  },{rootMargin:"0px 0px 110px 0px",threshold:.01});
+  rv.forEach(function(e){io.observe(e)});
+}
+sweep();
+onScroll();
+
+/* ── ticker: an explicit pause control, since hover-to-pause
+      does not exist on a touch screen ─────────────────────── */
+var ticker=$("#ticker"),tickerBtn=$("#ticker-btn");
+if(ticker&&tickerBtn){
+  tickerBtn.addEventListener("click",function(){
+    var paused=ticker.classList.toggle("is-paused");
+    tickerBtn.setAttribute("aria-pressed",String(paused));
+    tickerBtn.setAttribute("aria-label",paused?"Resume the moving list":"Pause the moving list");
+  });
+}
+
+/* ── pointer spotlight (mouse/trackpad only) ───────────────── */
+var FINE=window.matchMedia("(hover: hover)").matches;
+if(FINE){
+  $$(".item, .dr").forEach(function(el){
+    el.addEventListener("pointermove",function(e){
+      var r=el.getBoundingClientRect();
+      el.style.setProperty("--mx",(e.clientX-r.left)+"px");
+      el.style.setProperty("--my",(e.clientY-r.top)+"px");
+    },{passive:true});
+  });
+}else if("IntersectionObserver" in window){
+  /* touch: light the doctrine row nearest the viewport centre instead */
+  var nearIO=new IntersectionObserver(function(es){
+    es.forEach(function(en){en.target.classList.toggle("near",en.isIntersecting)});
+  },{rootMargin:"-42% 0px -42% 0px",threshold:0});
+  $$(".dr").forEach(function(el){nearIO.observe(el)});
+}
+
+/* ── accordion: one open at a time ─────────────────────── */
+var items=$$(".item");
+items.forEach(function(d){
+  d.addEventListener("toggle",function(){
+    if(!d.open)return;
+    items.forEach(function(o){if(o!==d)o.open=false});
+  });
+});
+
+/* ── vessel anatomy: segment → highlighted zone + caliper ─ */
+var segs=$$(".seg"),zones=$$(".zone"),
+    sName=$("#stage-name"),sSpec=$("#stage-spec"),sIdx=$("#stage-idx"),
+    calSpan=$("#cal-span"),calL=$("#cal-l"),calR=$("#cal-r");
+function showZone(seg){
+  var k=seg.getAttribute("data-zone");
+  zones.forEach(function(z){z.classList.toggle("on",z.getAttribute("data-zone")===k)});
+  sName.innerHTML=seg.getAttribute("data-name");
+  sSpec.innerHTML=seg.getAttribute("data-spec");
+  sIdx.textContent=seg.getAttribute("data-idx");
+  var x=parseFloat(seg.getAttribute("data-cx")),w=parseFloat(seg.getAttribute("data-cw"));
+  if(calSpan&&!isNaN(x)){
+    calSpan.setAttribute("x1",x);calSpan.setAttribute("x2",x+w);
+    calL.setAttribute("x1",x);calL.setAttribute("x2",x);
+    calR.setAttribute("x1",x+w);calR.setAttribute("x2",x+w);
+  }
+}
+if(segs.length)showZone(segs[0]);
+if("IntersectionObserver" in window&&segs.length){
+  var sio=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting)showZone(en.target)});
+  },{rootMargin:"-45% 0px -45% 0px",threshold:0});
+  segs.forEach(function(s){sio.observe(s)});
+}
+
+/* ── nav marker ────────────────────────────────────────── */
+var links=$$(".nav a");
+var secs=links.map(function(l){return $(l.getAttribute("href"))}).filter(Boolean);
+if("IntersectionObserver" in window&&secs.length){
+  var nio=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting)return;
+      links.forEach(function(l){
+        if(l.getAttribute("href")==="#"+en.target.id)l.setAttribute("aria-current","true");
+        else l.removeAttribute("aria-current");
+      });
+    });
+  },{rootMargin:"-48% 0px -48% 0px"});
+  secs.forEach(function(s){nio.observe(s)});
+}
+
+/* ── bridge clock (GST = UTC+4) ────────────────────────── */
+var clock=$("#clock");
+function tick(){
+  if(!clock)return;
+  var d=new Date(Date.now()+(4*60+new Date().getTimezoneOffset())*60000);
+  var p=function(n){return n<10?"0"+n:""+n};
+  clock.textContent=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());
+}
+tick();setInterval(tick,1000);
+
+/* ── enquiry form ──────────────────────────────────────── */
+var form=$("#enq"),ok=$("#ok"),okTxt=$("#ok-txt");
+var rules={
+  "f-name":function(v){return v.trim().length>=2},
+  "f-email":function(v){return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim())},
+  "f-msg":function(v){return v.trim().length>=20}
+};
+var errId={"f-name":"e-name","f-email":"e-email","f-msg":"e-msg"};
+function check(id){
+  var el=$("#"+id),er=$("#"+errId[id]),good=rules[id](el.value);
+  el.setAttribute("aria-invalid",String(!good));
+  er.classList.toggle("on",!good);
+  return good;
+}
+Object.keys(rules).forEach(function(id){
+  var el=$("#"+id);
+  el.addEventListener("blur",function(){if(el.value!=="")check(id)});
+  el.addEventListener("input",function(){if(el.getAttribute("aria-invalid")==="true")check(id)});
+});
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  var bad=null;
+  Object.keys(rules).forEach(function(id){if(!check(id)&&!bad)bad=$("#"+id)});
+  if(bad){ok.classList.remove("on");bad.focus();return}
+  ok.classList.add("on");
+  okTxt.textContent="Thank you, "+$("#f-name").value.trim()+
+    ". Validation passed — this form is not yet wired to a backend, so nothing was sent. Email office@orsaricashipping.com in the meantime.";
+  ok.scrollIntoView({behavior:RM.matches?"auto":"smooth",block:"center"});
+});
+
+$("#yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
